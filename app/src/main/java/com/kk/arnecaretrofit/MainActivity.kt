@@ -19,10 +19,10 @@ val kdi = ApiUtils.getPostsDaoInterface()
 kdi.tumPostlar().enqueue(object : Callback<PostCevap>{
     override fun onResponse(call: Call<PostCevap>?, response: Response<PostCevap>?) {
         if (response!=null){
-            val kisilerListe=response.body().result
+            val kisilerListe=response.body().post
             for (k in kisilerListe){
-                Log.e("------","------")
-                Log.e("kisi adı:", k.attendeeName)
+                println("------"+"------")
+                println("kisi adı:"+ k.attendeeName)
             }
         }
     }

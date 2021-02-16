@@ -6,11 +6,11 @@ import com.google.gson.annotations.SerializedName
 data class PostCevap (
     @SerializedName ("result")
     @Expose
-    var result:List<Post>,
+    var post:List<Post>,
 
     @SerializedName ("result_message")
     @Expose
-    var resultMessage:List<CRUDCevap>
+    var sucessMessage:List<CRUDCevap>
 
 
         ){
