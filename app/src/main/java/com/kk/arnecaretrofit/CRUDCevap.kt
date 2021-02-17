@@ -12,7 +12,7 @@ data class CRUDCevap(
     var message: String,
     @SerializedName("type")
     @Expose
-    var type: String,
+    var type: String
 
     )
 
