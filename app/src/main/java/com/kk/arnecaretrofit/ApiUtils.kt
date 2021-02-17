@@ -1,5 +1,6 @@
 package com.kk.arnecaretrofit
 
+
 class ApiUtils {
     companion object {
         val BASE_URL = "https://v5.arneca.com/api/"

@@ -8,24 +8,32 @@ import retrofit2.Callback
 import retrofit2.Response
 
 class MainActivity : AppCompatActivity() {
+
+
+    private lateinit var kdi: PostsDaoInterface
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-       // postListele()
-        successgoster()
+
+
+
+        tumPostlar()
     }
 
-    fun postListele() {
+    fun tumPostlar() {
         val kdi = ApiUtils.getPostsDaoInterface()
         kdi.tumPostlar().enqueue(object : Callback<PostCevap> {
             override fun onResponse(call: Call<PostCevap>?, response: Response<PostCevap>?) {
                 if (response != null) {
-                    val kisilerListe = response.body().post
-                    for (k in kisilerListe) {
-                        println("------" + "------")
-                        println("kisi adı:" + k.attendeeName)
+                    var liste = response.body().post
+
+                    for (goster in liste){
+                        println(goster.id.toString())
                     }
+
                 }
+
             }
 
             override fun onFailure(call: Call<PostCevap>?, t: Throwable?) {
@@ -34,28 +42,7 @@ class MainActivity : AppCompatActivity() {
         })
 
     }
-    fun successgoster(){
 
-        val kdi = ApiUtils.getPostsDaoInterface()
-        kdi.tumCevap().enqueue(object :Callback<PostCevap>{
-            override fun onResponse(call: Call<PostCevap>?, response: Response<PostCevap>?) {
-                if (response !=null ){
-                    val successListe = response.body().sucessMessage
-                    for (k in successListe){
-                        println(k.message)
-                        println(k.title)
-                        println(k.type)
-                        println("*******")
-                    }
-                }
-            }
-
-            override fun onFailure(call: Call<PostCevap>?, t: Throwable?) {
-                println("hata mesajı alındı")
-            }
-        })
-
-    }
 
 }
 
