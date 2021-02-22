@@ -10,7 +10,7 @@ import retrofit2.Response
 class MainActivity : AppCompatActivity() {
 
 
-    private lateinit var kdi: PostsDaoInterface
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -22,6 +22,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     fun tumPostlar() {
+
         val kdi = ApiUtils.getPostsDaoInterface()
         kdi.tumPostlar().enqueue(object : Callback<PostCevap> {
             override fun onResponse(call: Call<PostCevap>?, response: Response<PostCevap>?) {
@@ -29,7 +30,7 @@ class MainActivity : AppCompatActivity() {
                     var liste = response.body().post
 
                     for (goster in liste){
-                        println(goster.id.toString())
+                        println(goster.id)
                     }
 
                 }
