@@ -6,11 +6,11 @@ import com.google.gson.annotations.SerializedName
 data class Post (
     @SerializedName("id")
     @Expose
-    var id: Int,
+    var id: String,
 
     @SerializedName("attendee_id")
     @Expose
-    var attendeeId: Int,
+    var attendeeId: String,
 
     @SerializedName("attendee_name")
     @Expose

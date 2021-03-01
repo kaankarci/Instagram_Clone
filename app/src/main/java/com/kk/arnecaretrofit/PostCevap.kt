@@ -2,6 +2,7 @@ package com.kk.arnecaretrofit
 
 import com.google.gson.annotations.Expose
 import com.google.gson.annotations.SerializedName
+import java.io.Serializable
 
 data class PostCevap (
     @SerializedName ("result")
@@ -10,8 +11,9 @@ data class PostCevap (
 
     @SerializedName ("result_message")
     @Expose
-    var sucessMessage:List<CRUDCevap>
+    var sucessMessage:CRUDCevap
 
 
-        ){
+        ):Serializable
+{
 }
