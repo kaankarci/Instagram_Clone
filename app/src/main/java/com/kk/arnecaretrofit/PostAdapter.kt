@@ -1,5 +1,6 @@
 package com.kk.arnecaretrofit
 
+import android.app.Application
 import android.content.Context
 import android.content.Intent
 import android.view.LayoutInflater
@@ -7,16 +8,15 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
+import android.widget.Toast
 import androidx.cardview.widget.CardView
 import androidx.core.view.isVisible
 import androidx.recyclerview.widget.RecyclerView
 import com.squareup.picasso.Picasso
 
-class PostAdapter(private val mContext: Context, private val postListe:List<Post>)
-    : RecyclerView.Adapter<PostAdapter.CardTasarimTutucu>() {
+class PostAdapter(private val mContext: Context, private val postListe:List<Post>): RecyclerView.Adapter<PostAdapter.CardTasarimTutucu>() {
     inner class CardTasarimTutucu(tasarim: View) : RecyclerView.ViewHolder(tasarim) {
 
-        var post_card: CardView
         var textViewKullaniciAdi: TextView
         var textViewLikeSayisi: TextView
         var textViewIzlenmeSayisi: TextView
@@ -24,21 +24,28 @@ class PostAdapter(private val mContext: Context, private val postListe:List<Post
         var postThumbFoto: ImageView
         var postProfilFoto: ImageView
         var belirtecFoto: ImageView
+        val post_card:View
+        var begeniResim:ImageView
+        var izlenmeResim:ImageView
+        var yorumResim:ImageView
 
         init {
-            textViewKullaniciAdi = tasarim.findViewById(R.id.textViewKullaniciAdiana)
-            textViewLikeSayisi = tasarim.findViewById(R.id.textViewLikeSayisiana)
-            textViewIzlenmeSayisi = tasarim.findViewById(R.id.textViewGoruntulenmeSayisiana)
-            textViewYorumSayisi = tasarim.findViewById(R.id.textViewYorumSayisiana)
-            postThumbFoto = tasarim.findViewById(R.id.imageViewPostFotografiana)
-            postProfilFoto = tasarim.findViewById(R.id.imageViewMiniProfilFotografiana)
+            textViewKullaniciAdi = tasarim.findViewById(R.id.textViewKullaniciAdi)
+            textViewLikeSayisi = tasarim.findViewById(R.id.textViewLikeSayisi)
+            textViewIzlenmeSayisi = tasarim.findViewById(R.id.textViewGoruntulenmeSayisi)
+            textViewYorumSayisi = tasarim.findViewById(R.id.textViewYorumSayisi)
+            postThumbFoto = tasarim.findViewById(R.id.imageViewPostFotografi)
+            postProfilFoto = tasarim.findViewById(R.id.imageViewMiniProfilFotografi)
             belirtecFoto = tasarim.findViewById(R.id.belirtec)
-            post_card = tasarim.findViewById(R.id.profileGoturenCard)
+            post_card=tasarim.findViewById(R.id.postCard)
+            begeniResim=tasarim.findViewById(R.id.begeniRes)
+            izlenmeResim=tasarim.findViewById(R.id.izlenmeRes)
+            yorumResim=tasarim.findViewById(R.id.yorumRes)
         }
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CardTasarimTutucu {
-        val tasarim =LayoutInflater.from(mContext).inflate(R.layout.post_card_tasarim, parent, false)
+        val tasarim= LayoutInflater.from(mContext).inflate(R.layout.post_card_tasarim,parent,false)
         return CardTasarimTutucu(tasarim)
     }
 
@@ -79,19 +86,32 @@ class PostAdapter(private val mContext: Context, private val postListe:List<Post
         //like,izlenme,yorum sayısı
         holder.textViewYorumSayisi.text = "${post.commentCount}"
         holder.textViewLikeSayisi.text = "${post.likeCount}"
-        holder.textViewYorumSayisi.text = "${post.videoView}"
+        holder.textViewIzlenmeSayisi.text = "${post.videoView}"
 
+        holder.yorumResim.setOnClickListener {Toast.makeText(mContext, "Yorum sayısı:${post.commentCount}", Toast.LENGTH_SHORT).show() }
+        holder.begeniResim.setOnClickListener {Toast.makeText(mContext, "Like sayısı:${post.likeCount}", Toast.LENGTH_SHORT).show() }
+        holder.izlenmeResim.setOnClickListener {Toast.makeText(mContext, "Izlenme sayısı:${post.videoView}", Toast.LENGTH_SHORT).show() }
         //card'a tıklanınca profile gidecek
+
         holder.post_card.setOnClickListener {
-            val intent = Intent(mContext, ProfileActivity::class.java)
-            intent.putExtra("postNesne",post)
+            /*  val intent = Intent(mContext, MainActivity::class.java)
+              intent.putExtra("postNesne",post)
+              mContext.startActivity(intent)*/
+
+
+            val tiklanilanId=post.attendeeId
+            val intent= Intent(mContext,ProfileActivity::class.java)
+            intent.putExtra("profilId",tiklanilanId)
+
+
+
             mContext.startActivity(intent)
 
         }
     }
 
     override fun getItemCount(): Int {
-        return postListe.size
+return postListe.size
     }
 
 

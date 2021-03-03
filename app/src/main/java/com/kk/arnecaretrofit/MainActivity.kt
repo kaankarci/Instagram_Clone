@@ -1,5 +1,7 @@
 package com.kk.arnecaretrofit
 
+import android.content.Context
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
@@ -13,44 +15,38 @@ import retrofit2.Callback
 import retrofit2.Response
 
 class MainActivity : AppCompatActivity() {
-    private lateinit var adapter:PostAdapter
+    private lateinit var adapter: PostAdapter
     private lateinit var pdi: PostsDaoInterface
-
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+
+
+
         pdi = ApiUtils.getPostsDaoInterface()
 
         anasayfaRv.setHasFixedSize(true)
-        anasayfaRv.layoutManager=LinearLayoutManager(this)
+        anasayfaRv.layoutManager = LinearLayoutManager(this)
         tumPostlar()
-        println("string".takeLast(3))
+
     }
 
     fun tumPostlar() {
-        pdi.tumPostlar().enqueue(object : Callback<PostCevap> {
-
+        pdi.tumPostlar().enqueue(object  : Callback<PostCevap>{
             override fun onResponse(call: Call<PostCevap>?, response: Response<PostCevap>?) {
+                if (response!=null){
+                    val liste= response.body().post
 
-                if (response != null) {
-                    val liste = response.body().post
-
-
-                    adapter=PostAdapter(this@MainActivity,liste)
+                    adapter= PostAdapter(this@MainActivity,liste)
                     anasayfaRv.adapter=adapter
 
-
                 }
-                }
-
-            override fun onFailure(call: Call<PostCevap>?, t: Throwable?) {
-
             }
 
-
-
+            override fun onFailure(call: Call<PostCevap>?, t: Throwable?) {
+            }
 
         })
 
