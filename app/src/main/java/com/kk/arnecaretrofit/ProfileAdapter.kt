@@ -53,7 +53,6 @@ class ProfileAdapter(private val mContext:Context,private val postListe:List<Pos
 
 
         val post = postListe.get(position)
-        println("position degeri: "+ position)
         if (post.media.takeLast(4) != ".mp4") {
             holder.belirtecFotop.isVisible = false
         }

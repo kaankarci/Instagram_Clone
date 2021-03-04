@@ -29,6 +29,7 @@ class ProfileActivity : AppCompatActivity() {
 
         profiliGetir()
         postlariGetir()
+
     }
 
     fun profiliGetir() {
@@ -91,18 +92,33 @@ class ProfileActivity : AppCompatActivity() {
 
         })
 
-        val intent2= Intent(this,ProfileAdapter::class.java)
-        intent2.putExtra("profilId",gelenId)
 
     }
 
     fun postlariGetir() {
+        val gelenId = intent.getSerializableExtra("profilId")
+        println("gelen İD: ${gelenId}")
+
         pdi.tumPostlar().enqueue(object : Callback<PostCevap> {
-            override fun onResponse(call: Call<PostCevap>?, response: Response<PostCevap>?) {
+            override fun onResponse(call: Call<PostCevap,>?, response: Response<PostCevap>?) {
                 if (response != null) {
                     val liste = response.body().post
-                    adapter = ProfileAdapter(this@ProfileActivity, liste)
-                    profileRv.adapter = adapter
+
+                        for(k in liste){
+                            if (k.attendeeId==gelenId){
+
+                                //Bu aralığa öyle birşey yazmalıyım ki ProfileAdapter'e gidip sadece o Id'deki verileri çağırsın
+
+
+                            }
+
+                        }
+                    //  adapter = ProfileAdapter(this@ProfileActivity, liste)
+                   //         profileRv.adapter = adapter
+
+
+
+
 
                 }
             }

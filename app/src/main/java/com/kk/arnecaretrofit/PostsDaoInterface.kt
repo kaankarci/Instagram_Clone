@@ -13,4 +13,5 @@ interface PostsDaoInterface {
     fun tumPostlar(): Call<PostCevap>
 
 
+
 }
