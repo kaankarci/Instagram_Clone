@@ -1,9 +1,12 @@
 package com.kk.arnecaretrofit
 
+import android.os.Parcelable
 import com.google.gson.annotations.Expose
 import com.google.gson.annotations.SerializedName
+import kotlinx.android.parcel.Parcelize
+import java.io.Serializable
 
-data class Post (
+data class Post   (
     @SerializedName("id")
     @Expose
     var id: Int,
@@ -68,4 +71,4 @@ data class Post (
     @Expose
     var createdAt: String
 
-){}
+):Serializable{}

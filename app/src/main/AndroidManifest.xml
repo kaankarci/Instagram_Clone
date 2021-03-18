@@ -12,7 +12,6 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.ArnecaRetrofit"
         android:usesCleartextTraffic="true">
-        <activity android:name=".ProfilePostDetayActivity"></activity>
         <activity android:name=".ProfileActivity" />
         <activity android:name=".MainActivity">
             <intent-filter>

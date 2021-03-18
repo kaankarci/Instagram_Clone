@@ -9,7 +9,7 @@ import retrofit2.http.POST
 
 interface PostsDaoInterface {
 
-    @GET("PostWall?attendee_id=228809199&increment=20&event_id=5")
+    @GET("PostWall?attendee_id=222&increment=20&event_id=5")
     fun tumPostlar(): Call<PostCevap>
 
 

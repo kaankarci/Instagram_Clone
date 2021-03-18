@@ -52,5 +52,9 @@ dependencies {
 
     //Picasso Kütüphanesi
     implementation 'com.squareup.picasso:picasso:2.71828'
+    //zoom in imageview
+    implementation 'com.zolad:zoominimageview:1.0.0'
+    //profil fotografı yuvarlak yapma
+    implementation 'de.hdodenhof:circleimageview:3.0.0'
 
 }

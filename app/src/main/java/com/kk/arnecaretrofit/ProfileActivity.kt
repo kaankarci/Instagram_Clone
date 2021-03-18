@@ -2,14 +2,19 @@ package com.kk.arnecaretrofit
 
 import android.content.Context
 import android.content.Intent
+import android.graphics.ColorSpace
+import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.os.Parcelable
+import androidx.core.view.isVisible
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.activity_profile.*
 import kotlinx.android.synthetic.main.post_card_tasarim.*
 import kotlinx.android.synthetic.main.profile_card_tasarim.*
+import kotlinx.android.synthetic.main.profile_post_card.*
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -17,7 +22,7 @@ import retrofit2.Response
 class ProfileActivity : AppCompatActivity() {
     private lateinit var pdi: PostsDaoInterface
     private lateinit var adapter: ProfileAdapter
-
+    var PostListesi = ArrayList<Post>()
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_profile)
@@ -33,7 +38,8 @@ class ProfileActivity : AppCompatActivity() {
     }
 
     fun profiliGetir() {
-        val gelenId = intent.getSerializableExtra("profilId")
+        val gelenPost = intent.extras?.get("tiklanilanPost") as Post
+        val gelenId = gelenPost.attendeeId
 
 
 
@@ -56,6 +62,8 @@ class ProfileActivity : AppCompatActivity() {
                                     .error(R.drawable.ic_baseline_perm_identity_24)
                                     .into(imageViewProfilFoto)
                             }
+
+                            
                             //Kullanıcı Adı
                             textViewKullaniciAdiProfil.text = k.attendeeName
                             //Toplam statlar
@@ -96,31 +104,26 @@ class ProfileActivity : AppCompatActivity() {
     }
 
     fun postlariGetir() {
-        val gelenId = intent.getSerializableExtra("profilId")
-        println("gelen İD: ${gelenId}")
+        val gelenPost = intent.extras?.get("tiklanilanPost") as Post
 
         pdi.tumPostlar().enqueue(object : Callback<PostCevap> {
-            override fun onResponse(call: Call<PostCevap,>?, response: Response<PostCevap>?) {
+            override fun onResponse(call: Call<PostCevap>?, response: Response<PostCevap>?) {
                 if (response != null) {
                     val liste = response.body().post
 
-                        for(k in liste){
-                            if (k.attendeeId==gelenId){
+                    for (k in liste) {
+                        if (k.attendeeId == gelenPost.attendeeId) {
 
-                                //Bu aralığa öyle birşey yazmalıyım ki ProfileAdapter'e gidip sadece o Id'deki verileri çağırsın
-
-
-                            }
+                            PostListesi.add(gelenPost)
+                            break
 
                         }
-                    //  adapter = ProfileAdapter(this@ProfileActivity, liste)
-                   //         profileRv.adapter = adapter
 
-
-
-
+                    }
 
                 }
+                adapter = ProfileAdapter(this@ProfileActivity, PostListesi)
+                profileRv.adapter = adapter
             }
 
             override fun onFailure(call: Call<PostCevap>?, t: Throwable?) {
@@ -129,4 +132,5 @@ class ProfileActivity : AppCompatActivity() {
         })
 
     }
+
 }

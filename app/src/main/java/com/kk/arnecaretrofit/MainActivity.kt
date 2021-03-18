@@ -39,9 +39,9 @@ class MainActivity : AppCompatActivity() {
                 if (response!=null){
                     val liste= response.body().post
 
+
                     adapter= PostAdapter(this@MainActivity,liste)
                     anasayfaRv.adapter=adapter
-
                 }
             }
 

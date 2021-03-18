@@ -15,7 +15,7 @@
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:layout_gravity="center"
             android:orientation="vertical">
 
@@ -26,12 +26,14 @@
                 android:layout_marginBottom="5dp"
                 android:orientation="horizontal">
 
-                <ImageView
+                <de.hdodenhof.circleimageview.CircleImageView
+                    xmlns:app="http://schemas.android.com/apk/res-auto"
                     android:id="@+id/imageViewMiniProfilFotografi"
                     android:layout_width="45dp"
+                    android:layout_marginLeft="7dp"
+                    android:src="@drawable/ic_baseline_perm_identity_24"
                     android:layout_height="45dp"
-                    android:layout_marginLeft="40dp"
-                    tools:srcCompat="@tools:sample/avatars" />
+                    />
 
                 <TextView
                     android:id="@+id/textViewKullaniciAdi"
@@ -39,6 +41,7 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
                     android:paddingLeft="20dp"
+                    android:textStyle="bold"
                     android:text="Kullanıcı Adı" />
 
             </LinearLayout>
@@ -47,10 +50,10 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
 
-                <ImageView
+                <com.google.android.material.imageview.ShapeableImageView
                     android:id="@+id/imageViewPostFotografi"
                     android:layout_width="match_parent"
-                    android:layout_height="250dp"
+                    android:layout_height="400dp"
                     android:layout_gravity="center"
                     tools:srcCompat="@tools:sample/avatars" />
 
@@ -70,6 +73,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
+                android:paddingBottom="60dp"
                 android:paddingTop="10dp">
 
                 <Space

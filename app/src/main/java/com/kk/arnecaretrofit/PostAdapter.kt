@@ -54,6 +54,7 @@ class PostAdapter(private val mContext: Context, private val postListe:List<Post
         if (post.media.takeLast(4) != ".mp4") {
             holder.belirtecFoto.isVisible = false
         }
+        else{holder.belirtecFoto.isVisible=true}
         //kullanıcı adı
         holder.textViewKullaniciAdi.text = "${post.attendeeName}"
 
@@ -73,11 +74,14 @@ class PostAdapter(private val mContext: Context, private val postListe:List<Post
             holder.postThumbFoto.setImageResource(R.drawable.fotoyok)
             if ("${post.media}".takeLast(3) != "mp4") {
                 holder.belirtecFoto.isVisible = false
+            post.media
+
             }
         }
         else {
             Picasso.get()
                 .load("${post.mediaThumb}")
+                .resize(500,500).centerInside()
                 .error(R.drawable.ic_baseline_share_24)
                 .into(holder.postThumbFoto)
 
@@ -94,17 +98,10 @@ class PostAdapter(private val mContext: Context, private val postListe:List<Post
         //card'a tıklanınca profile gidecek
 
         holder.post_card.setOnClickListener {
-            /*  val intent = Intent(mContext, MainActivity::class.java)
-              intent.putExtra("postNesne",post)
-              mContext.startActivity(intent)*/
 
-
-            val tiklanilanId=post.attendeeId
+            val tiklanilanPost=post
             val intent= Intent(mContext,ProfileActivity::class.java)
-            intent.putExtra("profilId",tiklanilanId)
-
-
-
+            intent.putExtra("tiklanilanPost",tiklanilanPost)
             mContext.startActivity(intent)
 
         }

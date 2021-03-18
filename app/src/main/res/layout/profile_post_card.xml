@@ -1,15 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:orientation="vertical"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+    android:orientation="vertical">
+
     <androidx.cardview.widget.CardView
         android:id="@+id/postCardp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_centerInParent="true"
+        android:layout_marginTop="10dp"
         app:cardCornerRadius="5dp">
 
         <LinearLayout
@@ -18,53 +20,37 @@
             android:layout_gravity="center"
             android:orientation="vertical">
 
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="20dp"
-                android:layout_marginBottom="5dp"
-                android:orientation="horizontal">
-
-                <ImageView
-                    android:id="@+id/imageViewMiniProfilFotografip"
-                    android:layout_width="45dp"
-                    android:layout_height="45dp"
-                    android:layout_marginLeft="40dp"
-                    tools:srcCompat="@tools:sample/avatars" />
-
-                <TextView
-                    android:id="@+id/textViewKullaniciAdip"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:paddingLeft="20dp"
-                    android:text="Kullanıcı Adı" />
-
-            </LinearLayout>
 
             <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
 
-                <ImageView
+
+                <com.zolad.zoominimageview.ZoomInImageView
                     android:id="@+id/imageViewPostFotografip"
                     android:layout_width="match_parent"
                     android:layout_height="250dp"
                     android:layout_gravity="center"
+                    android:visibility="visible"
                     tools:srcCompat="@tools:sample/avatars" />
 
-                <ImageView
-                    android:id="@+id/belirtecp"
-
+                <VideoView
+                    android:id="@+id/videoViewPostVideop"
                     android:layout_width="match_parent"
-                    android:layout_height="150dp"
-                    android:layout_alignBaseline="@id/belirtecp"
-                    android:layout_centerVertical="true"
-                    android:layout_gravity="center"
-                    android:src="@drawable/videobelirtec" />
+                    android:layout_height="250dp"
+                    android:visibility="invisible" />
+
+
             </RelativeLayout>
 
-
+<TextView
+    android:id="@+id/textViewCommentp"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:text="Comment Text"
+    android:layout_marginLeft="15dp"
+    android:layout_marginRight="15dp"
+    />
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
