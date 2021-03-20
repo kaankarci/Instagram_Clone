@@ -2,10 +2,13 @@ package com.kk.arnecaretrofit
 
 import android.content.Context
 import android.content.Intent
+import android.graphics.Typeface
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.view.View
+import android.widget.TextView
+import androidx.core.content.res.ResourcesCompat
 import androidx.core.view.isVisible
 import androidx.recyclerview.widget.LinearLayoutManager
 import kotlinx.android.synthetic.main.activity_main.*
@@ -23,7 +26,8 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-
+            val logoFont=ResourcesCompat.getFont(this,R.font.logo_font)
+            textViewLogo.typeface=logoFont
 
         pdi = ApiUtils.getPostsDaoInterface()
 

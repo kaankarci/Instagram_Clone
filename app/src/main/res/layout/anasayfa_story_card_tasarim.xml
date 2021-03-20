@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <de.hdodenhof.circleimageview.CircleImageView
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:id="@+id/imageViewStoryFoto"
+        android:layout_width="45dp"
+        android:layout_marginLeft="20dp"
+        android:src="@drawable/ic_baseline_perm_identity_24"
+        android:layout_height="45dp"
+        />
+</LinearLayout>
