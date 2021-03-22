@@ -11,13 +11,13 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_centerInParent="true"
-        android:layout_marginTop="10dp"
         app:cardCornerRadius="5dp">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
+            android:background="@drawable/some_foreground"
             android:orientation="vertical">
 
 
@@ -29,114 +29,112 @@
                 <com.zolad.zoominimageview.ZoomInImageView
                     android:id="@+id/imageViewPostFotografip"
                     android:layout_width="match_parent"
-                    android:layout_height="250dp"
-                    android:layout_gravity="center"
+                    android:layout_height="450dp"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginLeft="1dp"
+                    android:scaleType="centerCrop"
                     android:visibility="visible"
-                    tools:srcCompat="@tools:sample/avatars" />
+                    android:layout_marginBottom="20dp"
+                    android:src="@drawable/ic_launcher_background"
+                    />
 
                 <VideoView
                     android:id="@+id/videoViewPostVideop"
                     android:layout_width="match_parent"
-                    android:layout_height="250dp"
+                    android:layout_height="450dp"
                     android:visibility="invisible" />
 
 
             </RelativeLayout>
+
+<LinearLayout
+    android:layout_width="match_parent"
+
+    android:layout_height="70dp">
+
 
 <TextView
     android:id="@+id/textViewCommentp"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
     android:text="Comment Text"
+
+    android:textColor="@color/white"
+    android:layout_marginTop="10dp"
     android:layout_marginLeft="15dp"
     android:layout_marginRight="15dp"
     />
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:paddingTop="10dp">
+    <Space
+        android:layout_width="1dp"
+        android:layout_height="0dp"
+        android:layout_weight="1"/>
 
-                <Space
-                    android:layout_width="30dp"
-                    android:layout_height="0dp" />
+    <ImageView
+        android:id="@+id/begeniResp"
+        android:layout_width="wrap_content"
+        android:layout_height="20dp"
+        android:layout_gravity="center"
+        android:clickable="true"
+        android:foreground="?android:attr/selectableItemBackground"
+        android:src="@drawable/icon_like" />
 
-                <ImageView
-                    android:id="@+id/begeniResp"
-                    android:layout_width="wrap_content"
-                    android:layout_height="25dp"
-                    android:layout_gravity="center"
-                    android:clickable="true"
-                    android:foreground="?android:attr/selectableItemBackground"
-                    android:src="@drawable/ic_baseline_favorite_border_24" />
+    <TextView
+        android:id="@+id/textViewLikeSayisip"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:textColor="@color/white"
+        android:paddingLeft="2dp"
+        android:text="0" />
 
-                <TextView
-                    android:id="@+id/textViewLikeSayisip"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:paddingLeft="5dp"
-                    android:text="0" />
+    <Space
+        android:layout_width="7dp"
+        android:layout_height="0dp" />
 
-                <Space
-                    android:layout_width="10dp"
-                    android:layout_height="0dp" />
+    <ImageView
+        android:id="@+id/izlenmeResp"
+        android:layout_width="wrap_content"
+        android:layout_height="20dp"
+        android:layout_gravity="center"
+        android:clickable="true"
+        android:foreground="?android:attr/selectableItemBackground"
+        android:src="@drawable/icon_izlenme" />
 
-                <ImageView
-                    android:id="@+id/izlenmeResp"
-                    android:layout_width="wrap_content"
-                    android:layout_height="25dp"
-                    android:layout_gravity="center"
-                    android:clickable="true"
-                    android:foreground="?android:attr/selectableItemBackground"
-                    android:src="@drawable/izlenmesayisi" />
+    <TextView
+        android:id="@+id/textViewGoruntulenmeSayisip"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:textColor="@color/white"
+        android:paddingLeft="4dp"
+        android:text="0" />
 
-                <TextView
-                    android:id="@+id/textViewGoruntulenmeSayisip"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:paddingLeft="5dp"
-                    android:text="0" />
+    <Space
+        android:layout_width="7dp"
+        android:layout_height="0dp" />
 
-                <Space
-                    android:layout_width="10dp"
-                    android:layout_height="0dp" />
+    <ImageView
+        android:id="@+id/yorumResp"
+        android:layout_width="wrap_content"
+        android:layout_height="20dp"
+        android:layout_gravity="center"
+        android:clickable="true"
+        android:foreground="?android:attr/selectableItemBackground"
+        android:src="@drawable/icon_yorum" />
 
-                <ImageView
-                    android:id="@+id/yorumResp"
-                    android:layout_width="wrap_content"
-                    android:layout_height="25dp"
-                    android:layout_gravity="center"
-                    android:clickable="true"
-                    android:foreground="?android:attr/selectableItemBackground"
-                    android:src="@drawable/ic_baseline_mode_comment_24" />
+    <TextView
+        android:id="@+id/textViewYorumSayisip"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:textColor="@color/white"
+        android:paddingLeft="4dp"
+        android:text="0" />
+    <Space
+        android:layout_width="30dp"
+        android:layout_height="0dp"/>
+        </LinearLayout>
 
-                <TextView
-                    android:id="@+id/textViewYorumSayisip"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:paddingLeft="5dp"
-                    android:text="0" />
-
-                <Space
-                    android:layout_width="0dp"
-                    android:layout_height="0dp"
-                    android:layout_weight="1" />
-
-                <ImageView
-                    android:layout_width="wrap_content"
-                    android:layout_height="25dp"
-                    android:layout_gravity="center"
-                    android:clickable="true"
-                    android:foreground="?android:attr/selectableItemBackground"
-                    android:src="@drawable/ic_baseline_share_24" />
-
-                <Space
-                    android:layout_width="30dp"
-                    android:layout_height="0dp" />
-            </LinearLayout>
 
 
         </LinearLayout>

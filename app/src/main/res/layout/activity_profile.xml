@@ -1,49 +1,83 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/backgroundLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#0e032b"
     tools:context=".ProfileActivity">
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/profileRv"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <LinearLayout
         android:id="@+id/linearLayout"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="30dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="10dp"
         android:orientation="horizontal"
-        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
-
-        <ImageView
-            android:id="@+id/imageViewProfilFoto"
-            android:layout_width="120dp"
-            android:layout_height="120dp"
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            tools:srcCompat="@tools:sample/avatars" />
+            app:layout_constraintTop_toTopOf="parent">
+
+            <de.hdodenhof.circleimageview.CircleImageView
+                android:id="@+id/imageViewProfilFoto"
+                android:layout_width="70dp"
+                android:layout_height="70dp"
+                android:onClick="statusSakla"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:srcCompat="@tools:sample/avatars" />
+
+            <ImageView
+
+                android:id="@+id/statusGosterLayout"
+                android:layout_width="70dp"
+                android:layout_height="70dp"
+                android:onClick="statusGoster"
+                android:visibility="invisible" />
+        </RelativeLayout>
+
         <LinearLayout
+            android:id="@+id/layoutProfileStatus"
             android:layout_width="match_parent"
+            android:layout_height="wrap_content"
             android:orientation="vertical"
-            android:layout_height="match_parent">
+            android:visibility="visible">
+
             <TextView
                 android:id="@+id/textViewKullaniciAdiProfil"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textStyle="bold"
                 android:layout_marginLeft="30dp"
                 android:paddingBottom="15dp"
+                android:shadowColor="@color/black"
+                android:shadowDx="-2"
+                android:shadowDy="-2"
+                android:shadowRadius="1"
                 android:text="Kullanıcı Adı"
-                android:textAlignment="center" />
+                android:textAlignment="center"
+                android:textColor="@color/light_font"
+                android:textStyle="bold" />
+
             <GridLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:textAlignment="center">
-
 
 
                 <TextView
@@ -53,8 +87,13 @@
                     android:layout_row="1"
                     android:layout_column="0"
                     android:layout_marginLeft="30dp"
+                    android:shadowColor="@color/black"
+                    android:shadowDx="-2"
+                    android:shadowDy="-2"
+                    android:shadowRadius="1"
                     android:text="0\nGönderi Sayısı"
-                    android:textAlignment="center" />
+                    android:textAlignment="center"
+                    android:textColor="@color/light_font" />
 
                 <TextView
                     android:id="@+id/textViewBegeniSayisi"
@@ -62,8 +101,13 @@
                     android:layout_height="wrap_content"
                     android:layout_row="1"
                     android:layout_marginLeft="30dp"
+                    android:shadowColor="@color/black"
+                    android:shadowDx="-2"
+                    android:shadowDy="-2"
+                    android:shadowRadius="1"
                     android:text="0\nBeğeni Sayısı"
-                    android:textAlignment="center" />
+                    android:textAlignment="center"
+                    android:textColor="@color/light_font" />
 
                 <TextView
                     android:id="@+id/textViewIzlenmeSayisi"
@@ -72,8 +116,13 @@
                     android:layout_row="2"
                     android:layout_column="0"
                     android:layout_marginLeft="30dp"
+                    android:shadowColor="@color/black"
+                    android:shadowDx="-2"
+                    android:shadowDy="-2"
+                    android:shadowRadius="1"
                     android:text="0\nİzlenme Sayısı"
-                    android:textAlignment="center" />
+                    android:textAlignment="center"
+                    android:textColor="@color/light_font" />
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -81,8 +130,13 @@
                     android:layout_row="2"
                     android:layout_column="1"
                     android:layout_marginLeft="30dp"
+                    android:shadowColor="@color/black"
+                    android:shadowDx="-2"
+                    android:shadowDy="-2"
+                    android:shadowRadius="1"
                     android:text="0\nYorum Sayısı"
-                    android:textAlignment="center" />
+                    android:textAlignment="center"
+                    android:textColor="@color/light_font" />
             </GridLayout>
 
         </LinearLayout>
@@ -90,13 +144,5 @@
 
     </LinearLayout>
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/profileRv"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/linearLayout" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -7,13 +7,17 @@ import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.Parcelable
+import android.text.Layout
+import android.view.LayoutInflater
+import android.view.View
+import android.view.Window
+import android.view.WindowManager
 import androidx.core.view.isVisible
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.activity_profile.*
 import kotlinx.android.synthetic.main.post_card_tasarim.*
-import kotlinx.android.synthetic.main.profile_card_tasarim.*
 import kotlinx.android.synthetic.main.profile_post_card.*
 import retrofit2.Call
 import retrofit2.Callback
@@ -32,8 +36,10 @@ class ProfileActivity : AppCompatActivity() {
         profileRv.setHasFixedSize(true)
         profileRv.layoutManager = LinearLayoutManager(this)
 
+
         profiliGetir()
         postlariGetir()
+
 
     }
 
@@ -56,6 +62,7 @@ class ProfileActivity : AppCompatActivity() {
                                     .load(R.drawable.ic_baseline_perm_identity_24)
                                     .error(R.drawable.ic_baseline_perm_identity_24)
                                     .into(imageViewProfilFoto)
+
                             } else {
                                 Picasso.get()
                                     .load("https://v5.arneca.com${k.attendeeProfileImg}")
@@ -130,6 +137,16 @@ class ProfileActivity : AppCompatActivity() {
             }
 
         })
+
+    }
+
+    fun statusSakla(view : View){
+        statusGosterLayout.setVisibility(View.VISIBLE)
+        layoutProfileStatus.setVisibility(View.INVISIBLE)
+    }
+    fun statusGoster(view : View){
+        statusGosterLayout.setVisibility(View.INVISIBLE)
+        layoutProfileStatus.setVisibility(View.VISIBLE)
 
     }
 

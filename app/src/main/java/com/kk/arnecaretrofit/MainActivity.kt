@@ -7,6 +7,8 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.view.View
+import android.view.Window
+import android.view.WindowManager
 import android.widget.TextView
 import androidx.core.content.res.ResourcesCompat
 import androidx.core.view.isVisible
@@ -25,6 +27,8 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+        window.setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
+            WindowManager.LayoutParams.FLAG_FULLSCREEN)
 
             val logoFont=ResourcesCompat.getFont(this,R.font.logo_font)
             textViewLogo.typeface=logoFont

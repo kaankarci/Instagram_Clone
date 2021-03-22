@@ -86,7 +86,6 @@ class ProfileAdapter(private val mContext:Context,private val postListe:List<Pos
         holder.begeniResimp.setOnClickListener { Toast.makeText(mContext, "Like sayısı:${post.likeCount}", Toast.LENGTH_SHORT).show() }
         holder.izlenmeResimp.setOnClickListener { Toast.makeText(mContext, "Izlenme sayısı:${post.videoView}", Toast.LENGTH_SHORT).show() }
         //card'a tıklanınca profile gidecek
-
         holder.post_cardp.setOnClickListener {
 
         }

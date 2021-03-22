@@ -7,6 +7,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
+import android.widget.Space
 import android.widget.TextView
 import android.widget.Toast
 import androidx.cardview.widget.CardView
@@ -28,6 +29,9 @@ class PostAdapter(private val mContext: Context, private val postListe:List<Post
         var begeniResim:ImageView
         var izlenmeResim:ImageView
         var yorumResim:ImageView
+        var izlenmeBosluk:Space
+
+      //  var storyFoto:ImageView
 
         init {
             textViewKullaniciAdi = tasarim.findViewById(R.id.textViewKullaniciAdi)
@@ -41,11 +45,14 @@ class PostAdapter(private val mContext: Context, private val postListe:List<Post
             begeniResim=tasarim.findViewById(R.id.begeniRes)
             izlenmeResim=tasarim.findViewById(R.id.izlenmeRes)
             yorumResim=tasarim.findViewById(R.id.yorumRes)
+            izlenmeBosluk=tasarim.findViewById(R.id.izlenmeBosluk)
+
+      //  storyFoto=tasarim.findViewById(R.id.anasayfaStoryFotoRv)
         }
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CardTasarimTutucu {
-        val tasarim= LayoutInflater.from(mContext).inflate(R.layout.post_card_tasarim,parent,false)
+        val tasarim= LayoutInflater.from(mContext).inflate(R.layout.post_card_tasarim,parent, false)
         return CardTasarimTutucu(tasarim)
     }
 
@@ -53,8 +60,16 @@ class PostAdapter(private val mContext: Context, private val postListe:List<Post
         val post = postListe.get(position)
         if (post.media.takeLast(4) != ".mp4") {
             holder.belirtecFoto.isVisible = false
+            holder.izlenmeResim.isVisible = false
+            holder.textViewIzlenmeSayisi.isVisible = false
+            holder.izlenmeBosluk.isVisible = false
         }
-        else{holder.belirtecFoto.isVisible=true}
+        else{
+            holder.belirtecFoto.isVisible=true
+            holder.izlenmeResim.isVisible=true
+            holder.textViewIzlenmeSayisi.isVisible=true
+            holder.izlenmeBosluk.isVisible=true
+        }
         //kullanıcı adı
         holder.textViewKullaniciAdi.text = "${post.attendeeName}"
 
@@ -76,6 +91,8 @@ class PostAdapter(private val mContext: Context, private val postListe:List<Post
                 holder.belirtecFoto.isVisible = false
             post.media
 
+            }
+            else{                holder.belirtecFoto.isVisible = true
             }
         }
         else {
