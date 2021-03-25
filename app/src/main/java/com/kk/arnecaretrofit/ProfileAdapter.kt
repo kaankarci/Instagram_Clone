@@ -6,10 +6,7 @@ import android.net.Uri
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.ImageView
-import android.widget.TextView
-import android.widget.Toast
-import android.widget.VideoView
+import android.widget.*
 import androidx.cardview.widget.CardView
 import androidx.core.view.isVisible
 import androidx.recyclerview.widget.RecyclerView
@@ -29,6 +26,9 @@ class ProfileAdapter(private val mContext:Context,private val postListe:List<Pos
         var izlenmeResimp: ImageView
         var yorumResimp: ImageView
         var videop: VideoView
+
+
+
         init {
             textViewLikeSayisip = tasarim.findViewById(R.id.textViewLikeSayisip)
             textViewIzlenmeSayisip = tasarim.findViewById(R.id.textViewGoruntulenmeSayisip)
@@ -58,23 +58,29 @@ class ProfileAdapter(private val mContext:Context,private val postListe:List<Pos
 
 
         // media
-        if ("${post.media}" == "") {
-            holder.postThumbFotop.setImageResource(R.drawable.fotoyok)
-            holder.videop.isVisible.not()
-        }
-        else {
+        if ("${post.mediaType}" == "image") {
+
             Picasso.get()
                 .load("${post.media}")
-                .error(R.drawable.ic_baseline_share_24)
+                .error(R.drawable.fotoyok)
                 .into(holder.postThumbFotop)
 
+            holder.videop.isVisible=false
+            holder.postThumbFotop.isVisible=true
 
         }
-        if(post.media.takeLast(4)!=".mp4"){
+        if("${post.mediaType}" == "video"){
 
-            holder.postThumbFotop.isVisible.not()
-            holder.videop.isVisible
+            holder.videop.isVisible=true
+            holder.postThumbFotop.isVisible=false
+            //videoView için url ve başlangıc verıldı
+            var videoUri=Uri.parse("${post.media}")
+            holder.videop.setVideoURI(videoUri)
+             holder.videop.start()
+
         }
+
+
 
         //like,izlenme,yorum sayısı
 

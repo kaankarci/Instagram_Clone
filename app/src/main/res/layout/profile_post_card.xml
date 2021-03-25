@@ -16,8 +16,8 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:background="@color/black"
             android:layout_gravity="center"
-            android:background="@drawable/some_foreground"
             android:orientation="vertical">
 
 
@@ -32,109 +32,112 @@
                     android:layout_height="450dp"
                     android:layout_centerHorizontal="true"
                     android:layout_marginLeft="1dp"
-                    android:scaleType="centerCrop"
-                    android:visibility="visible"
                     android:layout_marginBottom="20dp"
+                    android:scaleType="centerCrop"
                     android:src="@drawable/ic_launcher_background"
-                    />
+                    android:visibility="visible" />
 
-                <VideoView
-                    android:id="@+id/videoViewPostVideop"
-                    android:layout_width="match_parent"
-                    android:layout_height="450dp"
-                    android:visibility="invisible" />
+                <FrameLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content">
 
+                    <VideoView
+
+                        android:id="@+id/videoViewPostVideop"
+                        android:layout_width="match_parent"
+                        android:layout_height="450dp"
+                        android:layout_marginBottom="10dp"
+                        android:visibility="invisible" />
+                </FrameLayout>
 
             </RelativeLayout>
 
-<LinearLayout
-    android:layout_width="match_parent"
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingBottom="10dp">
 
-    android:layout_height="70dp">
 
+                <TextView
+                    android:id="@+id/textViewCommentp"
+                    android:layout_width="220dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="15dp"
+                    android:layout_marginRight="15dp"
+                    android:text="Comment Text "
+                    android:textColor="@color/white" />
 
-<TextView
-    android:id="@+id/textViewCommentp"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:text="Comment Text"
+                <Space
+                    android:layout_width="1dp"
+                    android:layout_height="0dp"
+                    android:layout_weight="1" />
 
-    android:textColor="@color/white"
-    android:layout_marginTop="10dp"
-    android:layout_marginLeft="15dp"
-    android:layout_marginRight="15dp"
-    />
-    <Space
-        android:layout_width="1dp"
-        android:layout_height="0dp"
-        android:layout_weight="1"/>
+                <ImageView
+                    android:id="@+id/begeniResp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="20dp"
+                    android:layout_gravity="center"
+                    android:clickable="true"
+                    android:foreground="?android:attr/selectableItemBackground"
+                    android:src="@drawable/icon_like" />
 
-    <ImageView
-        android:id="@+id/begeniResp"
-        android:layout_width="wrap_content"
-        android:layout_height="20dp"
-        android:layout_gravity="center"
-        android:clickable="true"
-        android:foreground="?android:attr/selectableItemBackground"
-        android:src="@drawable/icon_like" />
+                <TextView
+                    android:id="@+id/textViewLikeSayisip"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:paddingLeft="2dp"
+                    android:text="0"
+                    android:textColor="@color/white" />
 
-    <TextView
-        android:id="@+id/textViewLikeSayisip"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:textColor="@color/white"
-        android:paddingLeft="2dp"
-        android:text="0" />
+                <Space
+                    android:layout_width="7dp"
+                    android:layout_height="0dp" />
 
-    <Space
-        android:layout_width="7dp"
-        android:layout_height="0dp" />
+                <ImageView
+                    android:id="@+id/izlenmeResp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="20dp"
+                    android:layout_gravity="center"
+                    android:clickable="true"
+                    android:foreground="?android:attr/selectableItemBackground"
+                    android:src="@drawable/icon_izlenme" />
 
-    <ImageView
-        android:id="@+id/izlenmeResp"
-        android:layout_width="wrap_content"
-        android:layout_height="20dp"
-        android:layout_gravity="center"
-        android:clickable="true"
-        android:foreground="?android:attr/selectableItemBackground"
-        android:src="@drawable/icon_izlenme" />
+                <TextView
+                    android:id="@+id/textViewGoruntulenmeSayisip"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:paddingLeft="4dp"
+                    android:text="0"
+                    android:textColor="@color/white" />
 
-    <TextView
-        android:id="@+id/textViewGoruntulenmeSayisip"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:textColor="@color/white"
-        android:paddingLeft="4dp"
-        android:text="0" />
+                <Space
+                    android:layout_width="7dp"
+                    android:layout_height="0dp" />
 
-    <Space
-        android:layout_width="7dp"
-        android:layout_height="0dp" />
+                <ImageView
+                    android:id="@+id/yorumResp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="20dp"
+                    android:layout_gravity="center"
+                    android:clickable="true"
+                    android:foreground="?android:attr/selectableItemBackground"
+                    android:src="@drawable/icon_yorum" />
 
-    <ImageView
-        android:id="@+id/yorumResp"
-        android:layout_width="wrap_content"
-        android:layout_height="20dp"
-        android:layout_gravity="center"
-        android:clickable="true"
-        android:foreground="?android:attr/selectableItemBackground"
-        android:src="@drawable/icon_yorum" />
+                <TextView
+                    android:id="@+id/textViewYorumSayisip"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:paddingLeft="4dp"
+                    android:text="0"
+                    android:textColor="@color/white" />
 
-    <TextView
-        android:id="@+id/textViewYorumSayisip"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:textColor="@color/white"
-        android:paddingLeft="4dp"
-        android:text="0" />
-    <Space
-        android:layout_width="30dp"
-        android:layout_height="0dp"/>
-        </LinearLayout>
-
+                <Space
+                    android:layout_width="30dp"
+                    android:layout_height="0dp" />
+            </LinearLayout>
 
 
         </LinearLayout>

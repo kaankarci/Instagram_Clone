@@ -22,6 +22,7 @@ import retrofit2.Response
 class MainActivity : AppCompatActivity() {
     private lateinit var adapter: PostAdapter
     private lateinit var pdi: PostsDaoInterface
+    private  lateinit var adapterStory: MainStoryAdapter
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -37,7 +38,11 @@ class MainActivity : AppCompatActivity() {
 
         anasayfaRv.setHasFixedSize(true)
         anasayfaRv.layoutManager = LinearLayoutManager(this)
+
+        anasayfaStoryFotoRv.setHasFixedSize(true)
+        anasayfaStoryFotoRv.layoutManager = LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL ,false)
         tumPostlar()
+        tumStory()
 
     }
 
@@ -50,6 +55,24 @@ class MainActivity : AppCompatActivity() {
 
                     adapter= PostAdapter(this@MainActivity,liste)
                     anasayfaRv.adapter=adapter
+                }
+            }
+
+            override fun onFailure(call: Call<PostCevap>?, t: Throwable?) {
+            }
+
+        })
+
+    }
+    fun tumStory() {
+        pdi.tumPostlar().enqueue(object  : Callback<PostCevap>{
+            override fun onResponse(call: Call<PostCevap>?, response: Response<PostCevap>?) {
+                if (response!=null){
+                    val liste= response.body().post
+
+
+                    adapterStory= MainStoryAdapter(this@MainActivity,liste)
+                    anasayfaStoryFotoRv.adapter=adapterStory
                 }
             }
 

@@ -12,6 +12,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.Window
 import android.view.WindowManager
+import android.widget.MediaController
 import androidx.core.view.isVisible
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.squareup.picasso.Picasso
@@ -41,113 +42,113 @@ class ProfileActivity : AppCompatActivity() {
         postlariGetir()
 
 
-    }
+  }
 
-    fun profiliGetir() {
-        val gelenPost = intent.extras?.get("tiklanilanPost") as Post
-        val gelenId = gelenPost.attendeeId
-
-
-
-        pdi.tumPostlar().enqueue(object : Callback<PostCevap> {
-            override fun onResponse(call: Call<PostCevap>?, response: Response<PostCevap>?) {
-                if (response != null) {
-
-                    val liste = response.body().post
-                    for (k in liste) {
-                        if (k.attendeeId == gelenId) {
-                            //Profil Fotografı
-                            if (k.attendeeProfileImg == "") {
-                                Picasso.get()
-                                    .load(R.drawable.ic_baseline_perm_identity_24)
-                                    .error(R.drawable.ic_baseline_perm_identity_24)
-                                    .into(imageViewProfilFoto)
-
-                            } else {
-                                Picasso.get()
-                                    .load("https://v5.arneca.com${k.attendeeProfileImg}")
-                                    .error(R.drawable.ic_baseline_perm_identity_24)
-                                    .into(imageViewProfilFoto)
-                            }
-
-                            
-                            //Kullanıcı Adı
-                            textViewKullaniciAdiProfil.text = k.attendeeName
-                            //Toplam statlar
-                            var toplamgonderi = 0
-                            var toplamBegeni = 0
-                            var toplamIzlenme = 0
-                            var toplamYorum = 0
-                            for (j in liste) {
-                                if (j.attendeeId == gelenId) {
-
-                                    toplamYorum = toplamYorum + j.commentCount
-                                    textViewIzlenmeSayisi.text = "${toplamYorum}\nYorum Sayısı"
-                                    toplamIzlenme = toplamIzlenme + j.videoView
-                                    textViewIzlenmeSayisi.text = "${toplamIzlenme}\nİzlenme Sayısı"
-                                    toplamBegeni = toplamBegeni + j.likeCount
-                                    textViewBegeniSayisi.text = "${toplamBegeni}\nBeğeni Sayısı"
-                                    toplamgonderi++
-                                    textViewGonderiSayisi.text = "${toplamgonderi}\nGönderi Sayısı"
-                                }
-                            }
-
-                            break
-                        }
+  fun profiliGetir() {
+      val gelenPost = intent.extras?.get("tiklanilanPost") as Post
+      val gelenId = gelenPost.attendeeId
 
 
-                    }
 
-                }
-            }
+      pdi.tumPostlar().enqueue(object : Callback<PostCevap> {
+          override fun onResponse(call: Call<PostCevap>?, response: Response<PostCevap>?) {
+              if (response != null) {
 
-            override fun onFailure(call: Call<PostCevap>?, t: Throwable?) {
-            }
+                  val liste = response.body().post
+                  for (k in liste) {
+                      if (k.attendeeId == gelenId) {
+                          //Profil Fotografı
+                          if (k.attendeeProfileImg == "") {
+                              Picasso.get()
+                                  .load(R.drawable.ic_baseline_perm_identity_24)
+                                  .error(R.drawable.ic_baseline_perm_identity_24)
+                                  .into(imageViewProfilFoto)
+
+                          } else {
+                              Picasso.get()
+                                  .load("https://v5.arneca.com${k.attendeeProfileImg}")
+                                  .error(R.drawable.ic_baseline_perm_identity_24)
+                                  .into(imageViewProfilFoto)
+                          }
 
 
-        })
+                          //Kullanıcı Adı
+                          textViewKullaniciAdiProfil.text = k.attendeeName
+                          //Toplam statlar
+                          var toplamgonderi = 0
+                          var toplamBegeni = 0
+                          var toplamIzlenme = 0
+                          var toplamYorum = 0
+                          for (j in liste) {
+                              if (j.attendeeId == gelenId) {
+
+                                  toplamYorum = toplamYorum + j.commentCount
+                                  textViewIzlenmeSayisi.text = "${toplamYorum}\nYorum Sayısı"
+                                  toplamIzlenme = toplamIzlenme + j.videoView
+                                  textViewIzlenmeSayisi.text = "${toplamIzlenme}\nİzlenme Sayısı"
+                                  toplamBegeni = toplamBegeni + j.likeCount
+                                  textViewBegeniSayisi.text = "${toplamBegeni}\nBeğeni Sayısı"
+                                  toplamgonderi++
+                                  textViewGonderiSayisi.text = "${toplamgonderi}\nGönderi Sayısı"
+                              }
+                          }
+
+                          break
+                      }
 
 
-    }
+                  }
 
-    fun postlariGetir() {
-        val gelenPost = intent.extras?.get("tiklanilanPost") as Post
+              }
+          }
 
-        pdi.tumPostlar().enqueue(object : Callback<PostCevap> {
-            override fun onResponse(call: Call<PostCevap>?, response: Response<PostCevap>?) {
-                if (response != null) {
-                    val liste = response.body().post
+          override fun onFailure(call: Call<PostCevap>?, t: Throwable?) {
+          }
 
-                    for (k in liste) {
-                        if (k.attendeeId == gelenPost.attendeeId) {
 
-                            PostListesi.add(gelenPost)
-                            break
+      })
 
-                        }
 
-                    }
+  }
 
-                }
-                adapter = ProfileAdapter(this@ProfileActivity, PostListesi)
-                profileRv.adapter = adapter
-            }
+  fun postlariGetir() {
+      val gelenPost = intent.extras?.get("tiklanilanPost") as Post
 
-            override fun onFailure(call: Call<PostCevap>?, t: Throwable?) {
-            }
+      pdi.tumPostlar().enqueue(object : Callback<PostCevap> {
+          override fun onResponse(call: Call<PostCevap>?, response: Response<PostCevap>?) {
+              if (response != null) {
+                  val liste = response.body().post
 
-        })
+                  for (k in liste) {
+                      if (k.attendeeId == gelenPost.attendeeId) {
+                          PostListesi.add(k)
 
-    }
+                      }
 
-    fun statusSakla(view : View){
-        statusGosterLayout.setVisibility(View.VISIBLE)
-        layoutProfileStatus.setVisibility(View.INVISIBLE)
-    }
-    fun statusGoster(view : View){
-        statusGosterLayout.setVisibility(View.INVISIBLE)
-        layoutProfileStatus.setVisibility(View.VISIBLE)
+                  }
 
-    }
+              }
+              println("indexle gelen:" + PostListesi)
+              adapter = ProfileAdapter(this@ProfileActivity, PostListesi)
+              profileRv.adapter = adapter
+          }
+
+          override fun onFailure(call: Call<PostCevap>?, t: Throwable?) {
+          }
+
+      })
+
+  }
+
+  fun statusSakla(view: View) {
+      statusGosterLayout.setVisibility(View.VISIBLE)
+      layoutProfileStatus.setVisibility(View.INVISIBLE)
+  }
+
+  fun statusGoster(view: View) {
+      statusGosterLayout.setVisibility(View.INVISIBLE)
+      layoutProfileStatus.setVisibility(View.VISIBLE)
+
+  }
 
 }

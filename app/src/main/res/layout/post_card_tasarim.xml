@@ -46,7 +46,7 @@
 
             </LinearLayout>
 
-            <RelativeLayout
+            <FrameLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
 
@@ -58,7 +58,6 @@
                     android:layout_gravity="center"
                     android:layout_marginBottom="20dp"
                     android:background="@drawable/shadow"
-                    android:elevation="16dp"
                     android:scaleType="centerCrop"
                     app:shapeAppearanceOverlay="@style/RoundedSquare"
                     tools:srcCompat="@tools:sample/avatars" />
@@ -66,14 +65,14 @@
                 <ImageView
                     android:id="@+id/belirtec"
                     android:visibility="visible"
-                    
                     android:layout_width="match_parent"
                     android:layout_height="150dp"
                     android:layout_alignBaseline="@id/belirtec"
                     android:layout_centerVertical="true"
                     android:layout_gravity="center"
-                    android:src="@drawable/videobelirtec" />
-            </RelativeLayout>
+                    android:src="@drawable/icon_izlenme"
+                    android:background="@color/black"/>
+            </FrameLayout>
 
 
             <LinearLayout
