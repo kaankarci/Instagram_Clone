@@ -84,9 +84,13 @@ class ProfileAdapter(private val mContext:Context,private val postListe:List<Pos
         holder.yorumResimp.setOnClickListener { Toast.makeText(mContext, "Yorum sayısı:${post.commentCount}", Toast.LENGTH_SHORT).show() }
         holder.begeniResimp.setOnClickListener { Toast.makeText(mContext, "Like sayısı:${post.likeCount}", Toast.LENGTH_SHORT).show() }
         holder.izlenmeResimp.setOnClickListener { Toast.makeText(mContext, "Izlenme sayısı:${post.videoView}", Toast.LENGTH_SHORT).show() }
-        //card'a tıklanınca profile gidecek
-        holder.post_cardp.setOnClickListener {
 
+        //card'a tıklanınca Fotoğrafın FullScreen hailne gidecek
+        holder.post_cardp.setOnClickListener {
+            val tiklanilanFotograf = post
+            val intent = Intent(mContext, PostFullScreen::class.java)
+            intent.putExtra("tiklanilanFotograf", tiklanilanFotograf)
+            mContext.startActivity(intent)
         }
 
 

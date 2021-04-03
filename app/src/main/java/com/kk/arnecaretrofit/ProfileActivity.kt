@@ -139,6 +139,10 @@ class ProfileActivity : AppCompatActivity() {
 
   }
 
+    fun fullScreenGoster(){
+
+    }
+
   fun statusSakla(view: View) {
       statusGosterLayout.setVisibility(View.VISIBLE)
       layoutProfileStatus.setVisibility(View.INVISIBLE)
