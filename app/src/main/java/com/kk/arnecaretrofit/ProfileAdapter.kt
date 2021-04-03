@@ -51,13 +51,9 @@ class ProfileAdapter(private val mContext:Context,private val postListe:List<Pos
     }
 
     override fun onBindViewHolder(holder: CardTasarimTutucu, position: Int) {
-
-
         val post = postListe.get(position)
 
-
-
-        // media
+        // media type
         if ("${post.mediaType}" == "image") {
 
             Picasso.get()
@@ -80,10 +76,7 @@ class ProfileAdapter(private val mContext:Context,private val postListe:List<Pos
 
         }
 
-
-
         //like,izlenme,yorum sayısı
-
         holder.textViewYorumSayisip.text = "${post.commentCount}"
         holder.textViewLikeSayisip.text = "${post.likeCount}"
         holder.textViewIzlenmeSayisip.text = "${post.videoView}"

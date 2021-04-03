@@ -25,14 +25,15 @@ class MainActivity : AppCompatActivity() {
     private  lateinit var adapterStory: MainStoryAdapter
 
 
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         window.setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
             WindowManager.LayoutParams.FLAG_FULLSCREEN)
 
-            val logoFont=ResourcesCompat.getFont(this,R.font.logo_font)
-            textViewLogo.typeface=logoFont
+         //   val logoFont=ResourcesCompat.getFont(this,R.font.logo_font)
+          //  textViewLogo.typeface=logoFont
 
         pdi = ApiUtils.getPostsDaoInterface()
 
@@ -65,11 +66,12 @@ class MainActivity : AppCompatActivity() {
 
     }
     fun tumStory() {
+
         pdi.tumPostlar().enqueue(object  : Callback<PostCevap>{
             override fun onResponse(call: Call<PostCevap>?, response: Response<PostCevap>?) {
                 if (response!=null){
                     val liste= response.body().post
-
+    println("maın actıvıty ıcındekı lıste: "+ liste)
 
                     adapterStory= MainStoryAdapter(this@MainActivity,liste)
                     anasayfaStoryFotoRv.adapter=adapterStory

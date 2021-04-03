@@ -14,13 +14,13 @@
         android:layout_height="wrap_content"
         android:layout_centerInParent="true"
         app:cardCornerRadius="5dp">
-
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_gravity="center"
             android:orientation="vertical">
 
+            <!-- Kullanıcı Adı/Fotoğrafı -->
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -45,7 +45,7 @@
                     android:textStyle="bold" />
 
             </LinearLayout>
-
+            <!-- Thumbnail Fotoğrafı -->
             <FrameLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
@@ -56,25 +56,22 @@
                     android:layout_height="350dp"
                     android:layout_centerHorizontal="true"
                     android:layout_gravity="center"
-                    android:layout_marginBottom="20dp"
-                    android:background="@drawable/shadow"
+                    android:paddingBottom="20dp"
                     android:scaleType="centerCrop"
                     app:shapeAppearanceOverlay="@style/RoundedSquare"
                     tools:srcCompat="@tools:sample/avatars" />
 
                 <ImageView
                     android:id="@+id/belirtec"
-                    android:visibility="visible"
                     android:layout_width="match_parent"
                     android:layout_height="150dp"
                     android:layout_alignBaseline="@id/belirtec"
                     android:layout_centerVertical="true"
                     android:layout_gravity="center"
-                    android:src="@drawable/icon_izlenme"
-                    android:background="@color/black"/>
+                    android:src="@drawable/videobelirtec"
+                    android:visibility="visible" />
             </FrameLayout>
-
-
+            <!-- Like vs. butonlar -->
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -176,9 +173,6 @@
                     android:layout_height="0dp" />
             </LinearLayout>
 
-
         </LinearLayout>
-
-
     </androidx.cardview.widget.CardView>
 </LinearLayout>

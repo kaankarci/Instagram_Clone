@@ -122,13 +122,12 @@ class ProfileActivity : AppCompatActivity() {
                   for (k in liste) {
                       if (k.attendeeId == gelenPost.attendeeId) {
                           PostListesi.add(k)
-
                       }
 
                   }
 
               }
-              println("indexle gelen:" + PostListesi)
+
               adapter = ProfileAdapter(this@ProfileActivity, PostListesi)
               profileRv.adapter = adapter
           }
