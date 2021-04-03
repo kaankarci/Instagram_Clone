@@ -23,6 +23,7 @@ class MainActivity : AppCompatActivity() {
     private lateinit var adapter: PostAdapter
     private lateinit var pdi: PostsDaoInterface
     private  lateinit var adapterStory: MainStoryAdapter
+    var soloStoryListe = ArrayList<Post>()
 
 
 
@@ -71,9 +72,17 @@ class MainActivity : AppCompatActivity() {
             override fun onResponse(call: Call<PostCevap>?, response: Response<PostCevap>?) {
                 if (response!=null){
                     val liste= response.body().post
-    println("maın actıvıty ıcındekı lıste: "+ liste)
+                    var tester=0
+                    for(i in liste){
+                        for(j in soloStoryListe){
+                           if (i.attendeeName==j.attendeeName){tester=1}
+                        }
+                        if (tester==0){soloStoryListe.add(i)
+                        println("solo isimler: "+soloStoryListe)}
+                        tester=0
+                    }
 
-                    adapterStory= MainStoryAdapter(this@MainActivity,liste)
+                    adapterStory= MainStoryAdapter(this@MainActivity,soloStoryListe)
                     anasayfaStoryFotoRv.adapter=adapterStory
                 }
             }
